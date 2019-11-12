@@ -21,6 +21,18 @@ export function todoReducer ( state = estadoInicial, action: fromTodo.Acciones )
                     return todoEdit;
                 }
             });
+        case fromTodo.EDITAR_TODO:
+            // Siempre hay que retornar un estado nuevo, por eso el uso del map, crea un nuevo array
+            return state.map( todoEdit => {
+                if (todoEdit.id === action.id){
+                    return {
+                        ...todoEdit,
+                        texto: action.texto
+                    };
+                } else {
+                    return todoEdit;
+                }
+            });
         default:
             return state;
     }
