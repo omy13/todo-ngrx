@@ -41,6 +41,9 @@ export function todoReducer ( state = estadoInicial, action: fromTodo.Acciones )
         case fromTodo.BORRAR_TODO:
             setStateStorage(state.filter( todoEdit => todoEdit.id !== action.id));
             return state.filter( todoEdit => todoEdit.id !== action.id);
+        case fromTodo.BORRAR_ALL_TODO:
+            setStateStorage(state.filter( todoEdit => !todoEdit.completado));
+            return state.filter( todoEdit => !todoEdit.completado);
         case fromTodo.TOGGLE_ALL_TODO:
             const nnnewState = state.map( todoEdit => {
                 return {
